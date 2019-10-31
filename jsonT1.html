@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var stu = {
+            name:'张三',
+            sex:'男',
+            age:20,
+            friends:[{name:'小王'},{name:'老王'}],
+            relative:{lxrname:'张思',phone:'3231'}
+        }
+        // //json转换为json格式的字符串
+        // var result = JSON.stringify(stu);
+        // console.log(result);
+
+        // var result = '{"name":"张三","sex":"男","age":20,"friends":[{"name":"小王"},{"name":"老王"}],"relative":{"lxrname":"张思","phone":"3231"}}';        
+        //              '{"sex":"男","name":"张三","age":20,"friends":[{"name":"小王"},{"name":"老王"}],"relative":{"lxrname":"张思","phone":"3231"}}'
+        // //json格式字符串转json对象
+        // var s = JSON.parse(result);
+        // console.log(s.name);
+
+
+        console.log(stu.name);
+        console.log('--------------------------');
+        var friends = stu.friends;
+        for(var i = 0; i < friends.length; i++)
+        {
+            var f = friends[i];
+            console.log(f.name);
+        }
+        console.log('--------------------------');
+        console.log(stu.relative.lxrname);
+
+        //对象.属性：如果属性不存在就是添加，存在就是修改
+        // stu.birth = new Date();
+        // stu.name = '王五';
+
+        //删除对象的属性    
+        delete stu.age;
+        var result = JSON.stringify(stu);
+        console.log(result);
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

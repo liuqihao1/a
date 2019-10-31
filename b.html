@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery-1.8.0.js" ></script>
+    <script>
+        //页面dom加载完成后，会调用ready()方法，方法需要一个函数作为参数
+        $(document).ready(function(){
+            //①
+            //通过id获取jQuery对象
+            //var r = $('#d1').html();
+            //通过class,加内容会直接修改,打印要分开写
+            //$('.a1').html('1111');
+            //var r =  $('.a1').html();
+
+
+            //②
+            //使用属性获取元素
+            //$('input[type="checkbox"]');
+            $('.aa').each(function(){
+                //each方法中this指被循环的原生js对象
+                console.log($(this).html());
+            })
+
+
+            //③
+            //链式编程
+            //绑定事件
+            $('.t').click(function(){
+                alert($(this).html());
+            }).mouseover(function(){
+                $(this).html('aaaa');
+            });
+
+            $('#b1').click(function(){
+                $('#s').removeClass('bb'); //移除class
+            });
+
+            $('#b2').click(function(){
+                $('#s').toggleClass('aa');//切换/显示：class
+            });
+
+            $('#b3').click(function(){
+                $('#s').addClass('cc'); //添加css
+            });
+
+            $('#b4').click(function(){
+                $('#s').css({
+                    //修改样式
+                    'background-color':'yellow',
+                    'text-decoration':'underline'
+                });
+            });
+
+            $('#box').mouseover(function(){
+                $(this).hide(1000);//获得焦点消失，设置时间
+            });
+
+            $('#btn1').click(function(){
+                // $('#box').show(500);
+                // $('#box').toggle(300);
+                $('#box').fadeOut(1000);//消失（点击显示）
+                // $('#box').fadeIn(1000);
+            });
+
+            //④
+            $('#dd2 input').blur(function(){
+                var v = $(this).val();//获取表单元素的value值
+                alert(v);
+                // $(this).val('sbbbbbbbbbb');
+                $(this).attr('value','sbbbbbbbbbb');//设置默认值
+            });
+
+            $('#tt').mouseover(function(){
+                // $(this).removeAttr('href');
+                $(this).attr('href','dasdsa;ldjsa;l');
+            });
+
+            //⑤
+            $('#in').blur(function(){
+                var v = $(this).val();
+               
+                $('#ul').append($('<li>'+v+'</li>'));//添加到节点内部的最后
+                //$('#ul').prepend($('<li>'+v+'</li>'));//添加到节点内部的最前
+
+                //$('#ul').after($('<div>'+v+'</div>'));
+            });
+
+            $('li').click(function(){
+                $(this).remove();//删除节点
+            });
+        });
+    </script>
+
+    <style>
+        .aa
+        {
+            color: red;
+        }
+        .bb
+        {
+            background-color: aqua;
+        }
+        .cc
+        {
+            font-size: 30px;
+        }
+        .box
+        {
+            width: 400px;
+            height: 400px;
+            background-color: bisque;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div id="d1" class="a1">
+        aa
+    </div> -->
+
+
+    <!-- <div>
+        <div class="aa">11</div>
+        <div>
+            <p class="aa">22</p>
+            <p>33</p>
+        </div>
+        <div>
+            <input type="text" name="n1" >
+            <input type="checkbox" name="k1">
+            <input type="checkbox" name="k1" >
+            <input type="checkbox" name="k1" >
+        </div>
+    </div> -->
+
+
+    <!-- <div class="t" >
+        学习
+    </div>
+    <div class="t" >
+        dd
+    </div>
+    <div id="s" class="aa bb">
+        啊啊啊啊啊
+    </div>
+    <input type="button" value="去除背景色" id="b1" >
+    <input type="button" value="切换前景色" id="b2">
+    <input type="button" value="添加字体大小" id="b3">
+    <input type="button" value="改变具体样式" id="b4" >
+    <div class="box" id="box"></div>
+    <input type="button" value="显示" id="btn1"> -->
+
+
+    <!-- <div id="dd2">
+        <input type="text" name="name" >
+    </div> 
+    <a href="#" id="tt" >测试</a> -->
+
+
+    <ul id="ul">
+        <li>11</li>
+        <li>22</li>
+        <li>33</li>
+    </ul>
+    <input type="text"  id="in">
+
+</body>
+</html>
